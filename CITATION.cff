@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: >-
+  If you use PaleoSTeHM Dashboard in your research, please cite both this
+  software release and the upstream PaleoSTeHM framework listed under references.
+title: "PaleoSTeHM Dashboard: Interactive STGP Holocene Sea-Level Modeling Framework"
+type: software
+version: "0.1.0"
+date-released: "2026-11-24"
+license: MIT
+repository-code: "https://github.com/Vicellken/PaleoSTeHM-Dashboard"
+url: "https://github.com/Vicellken/PaleoSTeHM-Dashboard"
+abstract: >-
+  Interactive Streamlit dashboard and modular spatiotemporal Gaussian Process
+  (STGP) framework for Holocene relative sea-level (RSL) reconstruction with
+  optional 1D/3D Glacial Isostatic Adjustment (GIA) priors, kernel
+  decomposition, sea-level budget analysis, and sensitivity testing.
+keywords:
+  - paleo sea level
+  - Holocene
+  - spatiotemporal Gaussian process
+  - glacial isostatic adjustment
+  - Streamlit
+  - PaleoSTeHM
+authors:
+  - family-names: Gu
+    given-names: Yi-Fei
+references:
+  - type: software
+    title: "PaleoSTeHM: Paleo Spatio-Temporal Hierarchical Modeling"
+    authors:
+      - family-names: Lin
+        given-names: Yucheng
+      - name: "Rutgers Earth System Science & Policy Lab"
+    year: 2025
+    repository-code: "https://github.com/radical-collaboration/PaleoSTeHM"
+    license: MIT

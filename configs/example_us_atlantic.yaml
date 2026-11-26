@@ -1,0 +1,115 @@
+# Sample STGP dashboard configuration using the open-access US Atlantic Coast dataset
+# from upstream PaleoSTeHM (https://github.com/radical-collaboration/PaleoSTeHM).
+#
+# Load this file on the Welcome screen of `python -m stgp_dashboard` to test the
+# dashboard end-to-end without requiring external GIA model grids.
+
+paths:
+  paleo_rsl: ../Data/US_Atlantic_Coast_for_ESTGP.csv
+  output_dir: Outputs/example_us_atlantic
+
+dashboard:
+  use_gia: false
+  workflow_hint: 16ka
+  workflow_label: No GIA prior
+  prior_preset: large
+  viz_scope: full
+
+analysis:
+  max_age_bp: 12000
+
+temporal_test_age:
+  start: 0
+  end: 12000
+  interval: 200
+
+spatial_test_age:
+  start: 0
+  end: 12000
+  interval: 1000
+
+rate_test_age:
+  start: 0
+  end: 12000
+  interval: 200
+
+spatial_grid:
+  lat_padding: 2.0
+  lon_padding: 2.0
+  resolution: 0.5
+
+time_axes:
+  paleo_unit: cal_yr_BP
+  modern_unit: CE
+  reference_year: 1950
+
+data_filter: {}
+
+data_adjustments:
+  level2_downweighting:
+    enabled: false
+    multiplier: 2.0
+    scope: slip_only
+    scale_targets: [rsl, age]
+
+temporal_centroid:
+  mode: data_mean
+  grid_n: 3
+
+gp_model:
+  run_optimization: true
+  fixed_seed: true
+  seed: 0
+  num_iterations: 200
+  learning_rate: 0.05
+  jitter: 1.0e-5
+  decay_r: 0.2
+  step_size: 50
+  gpu: false
+  kernels:
+    global_temporal:
+      enabled: true
+      type: Matern32
+      lengthscale_prior: [100.0, 20000.0]
+      variance_prior: [1.0e-5, 1000.0]
+    global_temporal_fast:
+      enabled: false
+      type: Matern32
+      lengthscale_prior: [50.0, 500.0]
+      variance_prior: [1.0e-6, 1.0]
+    regional_linear:
+      enabled: true
+      temporal_variance_prior: [1.0e-12, 1.0e-6]
+      spatial_lengthscale_prior: [0.0001, 0.01]
+    regional_nonlinear:
+      enabled: true
+      temporal_variance_prior: [1.0e-6, 100.0]
+      temporal_lengthscale_prior: [100.0, 20000.0]
+      spatial_lengthscale_prior: [1.0e-4, 0.35]
+    regional_nonlinear_fast:
+      enabled: false
+    local_nonlinear:
+      enabled: true
+      temporal_variance_prior: [1.0e-6, 1.0]
+      temporal_lengthscale_prior: [100.0, 20000.0]
+      spatial_lengthscale_prior: [1.0e-4, 0.002]
+    local_nonlinear_fast:
+      enabled: false
+    merged_nonlinear:
+      enabled: false
+      temporal_type: Matern32
+      spatial_type: Matern21
+      temporal_variance_prior: [1.0e-6, 100.0]
+      temporal_lengthscale_prior: [100.0, 20000.0]
+      spatial_lengthscale_prior: [1.0e-4, 0.2]
+    sp_whitenoise:
+      enabled: false
+      variance_prior: [1.0e-7, 1.0e-1]
+    whitenoise:
+      enabled: true
+      variance_prior: [1.0e-7, 1.0]
+
+budget:
+  age_windows_bp:
+    - [0, 4000]
+  merge_gia_global: true

@@ -1,0 +1,27 @@
+name: paleostehm
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10
+  - numpy>=1.26,<2.3
+  - scipy>=1.11
+  - pandas>=2.0
+  - matplotlib>=3.8
+  - cartopy>=0.23
+  - netcdf4>=1.6.5
+  - openpyxl
+  - pyyaml
+  - tqdm>=4.65
+  - pytest
+  - pip>=24.0
+  - pip:
+      # PyTorch CPU wheel installs by default (works on macOS Apple Silicon & Windows CPU).
+      # Optional NVIDIA GPU (Windows/Linux): after creating the env, run:
+      #   pip install --force-reinstall torch --index-url https://download.pytorch.org/whl/cu128
+      # Intel Mac (x86_64) users: PyTorch dropped macOS x86_64 wheels after 2.2.2;
+      # see README.md for the torch==2.2.2 fallback.
+      - torch>=2.7.0
+      - pyro-api==0.1.2
+      - pyro-ppl>=1.9.1
+      - streamlit>=1.28.0

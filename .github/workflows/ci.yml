@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Miniforge and paleostehm environment
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-variant: Miniforge3
+          miniforge-version: latest
+          use-mamba: true
+          environment-file: environment.yml
+          activate-environment: paleostehm
+
+      - name: Run pytest suite
+        env:
+          KMP_DUPLICATE_LIB_OK: "TRUE"
+        run: |
+          pytest stgp_dashboard/tests stgp_pipeline/tests

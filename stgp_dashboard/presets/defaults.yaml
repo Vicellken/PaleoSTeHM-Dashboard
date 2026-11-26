@@ -1,0 +1,76 @@
+# Default training and analysis settings for the STGP dashboard wizard.
+
+gp_model:
+  run_optimization: true
+  fixed_seed: true
+  seed: 0
+  num_iterations: 500
+  learning_rate: 0.05
+  jitter: 1.0e-5
+  decay_r: 0.2
+  step_size: 50
+  gpu: false
+
+analysis:
+  max_age_bp: 16000
+
+temporal_test_age:
+  start: 0
+  end: 16000
+  interval: 200
+
+spatial_test_age:
+  start: 0
+  end: 16000
+  interval: 1000
+
+rate_test_age:
+  start: 0
+  end: 16000
+  interval: 100
+
+spatial_grid:
+  lat_padding: 2.0
+  lon_padding: 2.0
+  resolution: 0.3
+
+data_filter:
+  levels: [1, 2]
+
+time_axes:
+  paleo_unit: cal_yr_BP
+  modern_unit: CE
+  reference_year: 1950
+
+data_adjustments:
+  level2_downweighting:
+    enabled: false
+    multiplier: 2.0
+    scope: slip_only
+    scale_targets: [rsl, age]
+
+temporal_centroid:
+  mode: data_mean
+  grid_n: 3
+
+gia:
+  mean_weighting: wrss_all
+  exclude_models: ["14055"]
+  n_search: 50
+  1d_source: both
+  ensemble: all
+
+sensitivity:
+  bounds_multipliers: [1.5, 2.0, 3.0]
+
+# Post-temporal sea-level budget donuts (absolute-rate % contributions).
+# Windows are summary periods only — not clamped to analysis/viz age span.
+# Optional gmsl_xlsx: {anu, ice6g} Excel paths split GIA prior into GMSL + GRD
+# (mean of the two curves); Global (Gm) remains a separate wedge.
+budget:
+  age_windows_bp:
+    - [0, 4000]
+  merge_gia_global: true
+  # gmsl_xlsx:
+  #   anu: ""
+  #   ice6g: ""

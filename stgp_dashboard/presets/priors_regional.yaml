@@ -1,0 +1,70 @@
+# Kernel prior presets by domain size (spatial lengthscale upper bounds in radians).
+# Multiply rad × 6371 km for approximate km.
+# Temporal/variance ranges in kernels_base are default Holocene STGP priors.
+
+small:
+  label: Small domain (~5° or less)
+  regional_linear:
+    spatial_lengthscale_prior: [0.0001, 0.005]
+  regional_nonlinear:
+    spatial_lengthscale_prior: [1.0e-4, 0.05]
+  local_nonlinear:
+    spatial_lengthscale_prior: [1.0e-4, 0.001]
+
+regional:
+  label: Regional (~15° × 12°)
+  regional_linear:
+    spatial_lengthscale_prior: [0.0001, 0.005]
+  regional_nonlinear:
+    spatial_lengthscale_prior: [1.0e-4, 0.2]
+  local_nonlinear:
+    spatial_lengthscale_prior: [1.0e-4, 0.001]
+
+large:
+  label: Large combined domain (~25°+)
+  regional_linear:
+    spatial_lengthscale_prior: [0.0001, 0.01]
+  regional_nonlinear:
+    spatial_lengthscale_prior: [1.0e-4, 0.35]
+  local_nonlinear:
+    spatial_lengthscale_prior: [1.0e-4, 0.002]
+
+kernels_base:
+  global_temporal:
+    enabled: true
+    type: Matern32
+    lengthscale_prior: [100.0, 20000.0]
+    variance_prior: [1.0e-5, 1000.0]
+  global_temporal_fast:
+    enabled: false
+    type: Matern32
+    lengthscale_prior: [50.0, 500.0]
+    variance_prior: [1.0e-6, 1.0]
+  regional_linear:
+    enabled: true
+    temporal_variance_prior: [1.0e-12, 1.0e-6]
+  regional_nonlinear:
+    enabled: true
+    temporal_variance_prior: [1.0e-6, 100.0]
+    temporal_lengthscale_prior: [100.0, 20000.0]
+  regional_nonlinear_fast:
+    enabled: false
+  local_nonlinear:
+    enabled: true
+    temporal_variance_prior: [1.0e-6, 1.0]
+    temporal_lengthscale_prior: [100.0, 20000.0]
+  local_nonlinear_fast:
+    enabled: false
+  merged_nonlinear:
+    enabled: false
+    temporal_type: Matern32
+    spatial_type: Matern21
+    temporal_variance_prior: [1.0e-6, 100.0]
+    temporal_lengthscale_prior: [100.0, 20000.0]
+    spatial_lengthscale_prior: [1.0e-4, 0.2]
+  sp_whitenoise:
+    enabled: false
+    variance_prior: [1.0e-7, 1.0e-1]
+  whitenoise:
+    enabled: true
+    variance_prior: [1.0e-7, 1.0]

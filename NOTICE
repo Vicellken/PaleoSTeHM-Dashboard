@@ -1,0 +1,22 @@
+Third-Party Software and Data Attribution Notice
+=================================================
+
+1. Upstream PaleoSTeHM (`PSTHM/`)
+   Portions of the core `PSTHM` Gaussian Process library derive from
+   PaleoSTeHM (https://github.com/radical-collaboration/PaleoSTeHM),
+   Copyright (c) 2023 Rutgers Earth System Science & Policy Lab,
+   licensed under the MIT License (see LICENSE).
+
+2. Pyro GP Kernels (`PSTHM/kernels.py`)
+   Select Gaussian Process kernel classes and combination patterns in
+   `PSTHM/kernels.py` are adapted from Pyro's `pyro.contrib.gp` module
+   (https://pyro.ai/), Copyright Contributors to the Pyro project,
+   licensed under the Apache License, Version 2.0
+   (https://www.apache.org/licenses/LICENSE-2.0).
+
+3. Sample Dataset (`Data/US_Atlantic_Coast_for_ESTGP.csv`)
+   Included solely for software testing and demonstration from the upstream
+   open-access PaleoSTeHM repository
+   (https://github.com/radical-collaboration/PaleoSTeHM). Please consult
+   upstream PaleoSTeHM for original data compilation citations and terms
+   of reuse before citing or redistributing this dataset in scientific work.

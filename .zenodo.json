@@ -1,0 +1,28 @@
+{
+  "title": "PaleoSTeHM Dashboard: Interactive STGP Holocene Sea-Level Modeling Framework",
+  "description": "Interactive Streamlit dashboard and modular spatiotemporal Gaussian Process (STGP) framework for Holocene relative sea-level (RSL) reconstruction, with optional 1D/3D Glacial Isostatic Adjustment (GIA) priors, kernel decomposition, sea-level budget analysis, and sensitivity testing. Built on the upstream PaleoSTeHM (PSTHM) library.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "version": "0.1.0",
+  "creators": [
+    {
+      "name": "Gu, Yi-Fei"
+    }
+  ],
+  "keywords": [
+    "paleo sea level",
+    "Holocene",
+    "spatiotemporal Gaussian process",
+    "glacial isostatic adjustment",
+    "Streamlit",
+    "PaleoSTeHM"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/radical-collaboration/PaleoSTeHM",
+      "relation": "isDerivedFrom",
+      "resource_type": "software"
+    }
+  ]
+}
